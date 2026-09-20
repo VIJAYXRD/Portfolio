@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIJAY — Creative Developer &amp; Coder</title>
+  <meta name="description"
+    content="Vijay — a student and creative developer building websites, Minecraft and Discord servers, and digital projects.">
+  <meta name="keywords" content="vijay, portfolio, web developer, server developer, minecraft, discord, coding">
+  <meta property="og:title" content="VIJAY — Creative Developer & Coder">
+  <meta property="og:description" content="Building digital experiences with code, creativity and design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ======================================================
+       NAVBAR
+  ====================================================== -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" id="nav-logo">VIJAY</a>
+      <ul class="nav-links" role="list">
+        <li><a href="#hero" id="nav-home">Home</a></li>
+        <li><a href="#about" id="nav-about">About</a></li>
+        <li><a href="#projects" id="nav-projects">Projects</a></li>
+        <li><a href="#services" id="nav-services">Services</a></li>
+        <li><a href="#contact" id="nav-contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#hero" class="mobile-link" id="m-home">Home</a></li>
+      <li><a href="#about" class="mobile-link" id="m-about">About</a></li>
+      <li><a href="#projects" class="mobile-link" id="m-projects">Projects</a></li>
+      <li><a href="#services" class="mobile-link" id="m-services">Services</a></li>
+      <li><a href="#contact" class="mobile-link" id="m-contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="menu-overlay" id="menu-overlay"></div>
+
+  <!-- ======================================================
+       HERO — Planet Background
+  ====================================================== -->
+  <section id="hero" aria-label="Hero section">
+    <!-- Star particle canvas -->
+    <canvas id="star-canvas" aria-hidden="true"></canvas>
+    <!-- Planet image background -->
+    <div class="hero-bg" id="hero-bg" role="img" aria-label="Purple ringed planet in space"></div>
+    <!-- Gradient overlays for readability -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <!-- Floating particles layer -->
+    <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
+
+    <!-- Main hero content -->
+    <div class="hero-content" id="hero-content">
+      <div class="hero-label">✦ &nbsp;CREATIVE DEVELOPER &amp; CODER&nbsp; ✦</div>
+      <h1 class="hero-title" id="hero-title">VIJAY</h1>
+      <div class="hero-subtitle">Web Developer &nbsp;•&nbsp; Server Developer &nbsp;•&nbsp; Coder</div>
+      <p class="hero-intro">Building digital experiences with code,<br>creativity and design.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary" id="btn-explore-projects">Explore Projects</a>
+        <a href="#about" class="btn btn-secondary" id="btn-about-me">About Me</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+        ABOUT ME
+        Includes the holographic identity diagram and the journey
+        timeline so the page flows Hero -> About -> Projects ->
+        Services -> Contact.
+    ========================================================== -->
+  <section id="about" aria-label="About me">
+    <div class="about-bg-decoration" aria-hidden="true">
+      <div class="deco-orb deco-orb-1"></div>
+      <div class="deco-orb deco-orb-2"></div>
+    </div>
+
+    <!-- Holographic identity diagram (kept from the original design) -->
+    <div class="identity-content">
+      <div class="section-label" id="identity-label">WHO AM I</div>
+      <h2 class="section-title" id="identity-title">The Mind Behind the Code</h2>
+
+      <!-- Node graph container -->
+      <div class="identity-nodes" id="identity-nodes" aria-label="Identity node diagram">
+        <!-- SVG connecting lines (drawn by JS) -->
+        <svg class="node-lines" id="node-lines" aria-hidden="true">
+          <defs>
+            <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <linearGradient id="line-grad-dev" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#9333ea" stop-opacity="0.9" />
+              <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.5" />
+            </linearGradient>
+            <linearGradient id="line-grad-mgr" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#d946ef" stop-opacity="0.5" />
+              <stop offset="100%" stop-color="#9333ea" stop-opacity="0.9" />
+            </linearGradient>
+            <linearGradient id="line-grad-age" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#9333ea" stop-opacity="0.9" />
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.5" />
+            </linearGradient>
+          </defs>
+          <line id="line-dev" class="connect-line" x1="50%" y1="50%" x2="75%" y2="20%" stroke="url(#line-grad-dev)"
+            filter="url(#glow-filter)" />
+          <line id="line-mgr" class="connect-line" x1="50%" y1="50%" x2="25%" y2="20%" stroke="url(#line-grad-mgr)"
+            filter="url(#glow-filter)" />
+          <line id="line-age" class="connect-line" x1="50%" y1="50%" x2="50%" y2="85%" stroke="url(#line-grad-age)"
+            filter="url(#glow-filter)" />
+        </svg>
+
+        <!-- Central node -->
+        <div class="node node-center" id="node-center">
+          <div class="node-ring node-ring-1" aria-hidden="true"></div>
+          <div class="node-ring node-ring-2" aria-hidden="true"></div>
+          <div class="node-ring node-ring-3" aria-hidden="true"></div>
+          <span>VIJAY</span>
+        </div>
+
+        <!-- Satellite nodes -->
+        <div class="node node-satellite node-dev" id="node-dev">
+          <div class="node-sat-icon">⚡</div>
+          <span>Web Developer</span>
+        </div>
+        <div class="node node-satellite node-mgr" id="node-mgr">
+          <div class="node-sat-icon">🎯</div>
+          <span>Server Developer</span>
+        </div>
+        <div class="node node-satellite node-age" id="node-age">
+          <div class="node-sat-icon">🌟</div>
+          <span>Student</span>
+        </div>
+
+        <!-- Floating particles around nodes -->
+        <div class="node-particle np-1" aria-hidden="true"></div>
+        <div class="node-particle np-2" aria-hidden="true"></div>
+        <div class="node-particle np-3" aria-hidden="true"></div>
+        <div class="node-particle np-4" aria-hidden="true"></div>
+        <div class="node-particle np-5" aria-hidden="true"></div>
+        <div class="node-particle np-6" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section-label reveal-up" id="about-label">WHO I AM</div>
+      <h2 class="section-title reveal-up" id="about-title">About Me</h2>
+
+      <div class="about-wrapper">
+        <!-- Glass card -->
+        <div class="about-glass reveal-up" id="about-glass">
+          <!-- Avatar -->
+          <div class="about-avatar" aria-hidden="true">
+            <div class="avatar-rings">
+              <div class="avatar-ring ar-1"></div>
+              <div class="avatar-ring ar-2"></div>
+              <div class="avatar-ring ar-3"></div>
+            </div>
+            <div class="avatar-inner">
+              <span>V</span>
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="about-text">
+            <h3 class="about-name">Vijay</h3>
+            <p>I'm <strong>Vijay</strong>, a student and creative developer who enjoys building websites, developing
+              Minecraft and Discord servers, coding, and creating digital projects.</p>
+            <p>I combine technical skills with creative vision — turning ideas into experiences that are both
+              functional and beautiful.</p>
+
+            <div class="about-stats" role="list" aria-label="Stats">
+              <div class="stat" role="listitem">
+                <span class="stat-num" aria-label="6 skills">6</span>
+                <span class="stat-label">Skills</span>
+              </div>
+              <div class="stat" role="listitem">
+                <span class="stat-num" aria-label="4 core skills">4</span>
+                <span class="stat-label">Core Skills</span>
+              </div>
+              <div class="stat" role="listitem">
+                <span class="stat-num" aria-label="Infinite ideas">∞</span>
+                <span class="stat-label">Ideas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-journey">
+      <div class="section-label reveal-up" id="exp-label">MY JOURNEY</div>
+      <h3 class="about-journey-title reveal-up" id="exp-title">Experience &amp; Achievements</h3>
+
+      <div class="timeline" role="list" aria-label="Timeline of achievements">
+
+        <div class="timeline-item tl-left reveal-tl" role="listitem" id="tl-1">
+          <div class="tl-dot" aria-hidden="true">
+            <div class="tl-dot-inner"></div>
+          </div>
+          <div class="tl-card">
+            <time class="tl-year" datetime="2025">2025</time>
+            <h3>Started Web Development</h3>
+            <p>Began learning HTML, CSS and JavaScript — built my first responsive, interactive websites.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item tl-right reveal-tl" role="listitem" id="tl-2">
+          <div class="tl-dot" aria-hidden="true">
+            <div class="tl-dot-inner"></div>
+          </div>
+          <div class="tl-card">
+            <time class="tl-year" datetime="2025">2025</time>
+            <h3>Discord Server Development</h3>
+            <p>Started building and configuring Discord servers — bots, roles, permissions and community systems.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item tl-left reveal-tl" role="listitem" id="tl-3">
+          <div class="tl-dot" aria-hidden="true">
+            <div class="tl-dot-inner"></div>
+          </div>
+          <div class="tl-card">
+            <time class="tl-year" datetime="2026">2026</time>
+            <h3>Minecraft Server Development</h3>
+            <p>Learning in Progress — creating and managing Minecraft servers, configurations and plugins.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item tl-right reveal-tl" role="listitem" id="tl-4">
+          <div class="tl-dot" aria-hidden="true">
+            <div class="tl-dot-inner"></div>
+          </div>
+          <div class="tl-card">
+            <time class="tl-year" datetime="2026">2026</time>
+            <h3>Upcoming Skills</h3>
+            <p>Currently exploring Minecraft mod development and learning video editing for upcoming projects.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item tl-left reveal-tl" role="listitem" id="tl-5">
+          <div class="tl-dot" aria-hidden="true">
+            <div class="tl-dot-inner"></div>
+          </div>
+          <div class="tl-card">
+            <time class="tl-year" datetime="2026">2026</time>
+            <h3>Portfolio Launch</h3>
+            <p>Launched this cinematic sci-fi portfolio — a showcase of all skills built into one experience.</p>
+          </div>
+        </div>
+
+      </div><!-- end .timeline -->
+    </div><!-- end .about-journey -->
+  </section>
+
+  <!-- ======================================================
+            PROJECTS
+       ====================================================== -->
+  <section id="projects" aria-label="Projects section">
+    <div class="projects-bg-deco" aria-hidden="true">
+      <div class="deco-orb deco-orb-3"></div>
+    </div>
+    <div class="container">
+      <div class="section-label reveal-up" id="projects-label">WHAT I'VE BUILT</div>
+      <h2 class="section-title reveal-up" id="projects-title">My Projects</h2>
+
+      <div class="projects-grid">
+
+        <article class="project-card reveal-card" id="proj-1">
+          <div class="project-preview" style="--grad-a:#1a0533;--grad-b:#6b21a8">
+            <!-- Reuses the existing planet hero asset (first.jpg) as the thumbnail.
+                 The emoji icon layer was removed so only the planet image shows. -->
+            <img class="project-preview-img" src="first.jpg"
+              alt="Purple ringed planet used as the portfolio hero background" loading="lazy">
+            <div class="project-preview-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-info">
+            <h3>Portfolio Website</h3>
+            <p>A responsive personal portfolio with scroll-driven animations and a modern cosmic theme.</p>
+            <div class="project-tags" role="list" aria-label="Technologies">
+              <span role="listitem">HTML</span>
+              <span role="listitem">CSS</span>
+              <span role="listitem">JavaScript</span>
+            </div>
+            <!-- No placeholder "#" href: this button only opens the project modal,
+                 so it never jumps the page back to the top. -->
+            <button type="button" class="btn btn-small" id="view-proj-1">View Project</button>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" id="proj-2">
+          <div class="project-preview" style="--grad-a:#0c1a3d;--grad-b:#1e3a8a">
+            <div class="project-preview-inner">
+              <div class="project-preview-icon" aria-hidden="true">⌨️</div>
+            </div>
+            <div class="project-preview-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-info">
+            <h3>Code Projects</h3>
+            <p>Coding experiments and small interactive web applications built while learning HTML, CSS, Python and
+              Java.</p>
+            <div class="project-tags" role="list" aria-label="Technologies">
+              <span role="listitem">Python</span>
+              <span role="listitem">JavaScript</span>
+              <span role="listitem">HTML</span>
+            </div>
+            <button type="button" class="btn-coming" id="view-proj-2" disabled>Coming!</button>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" id="proj-3">
+          <div class="project-preview" style="--grad-a:#1f0a2e;--grad-b:#7c3aed">
+            <!-- Real dc.png thumbnail (project-root path) replaces the 🎨 placeholder -->
+            <img class="project-preview-img" src="dc.png"
+              alt="Discord logo glowing in a cosmic nebula, representing the server projects" loading="lazy">
+            <div class="project-preview-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-info">
+            <h3>Server Projects</h3>
+            <p>Setting up and configuring Discord servers and Minecraft servers — roles, permissions, bots and plugins.
+            </p>
+            <div class="project-tags" role="list" aria-label="Technologies">
+              <span role="listitem">Discord</span>
+              <span role="listitem">Minecraft</span>
+              <span role="listitem">Configuration</span>
+            </div>
+            <a href="https://discordapp.com/users/1282254632298479649" class="btn btn-small" id="view-proj-3"
+              target="_blank" rel="noopener noreferrer">View Discord Profile</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" id="proj-4">
+          <div class="project-preview" style="--grad-a:#0a1f0a;--grad-b:#166534">
+            <img class="project-preview-img" src="mc.png"
+              alt="Minecraft world landscape featuring Steve and Alex atop a mountain" loading="lazy">
+            <div class="project-preview-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-info">
+            <h3>Minecraft Server Projects</h3>
+            <p>Building and managing Minecraft servers across DOOM MC, BUBBLE MC and ARCANE MC — configurations,
+              plugins and server experiences.</p>
+            <div class="project-tags" role="list" aria-label="Minecraft servers">
+              <span role="listitem">DOOM MC</span>
+              <span role="listitem">BUBBLE MC</span>
+              <span role="listitem">ARCANE MC</span>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- end .projects-grid -->
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SERVICES
+  ====================================================== -->
+  <section id="services" aria-label="Services section">
+    <div class="services-bg-deco" aria-hidden="true">
+      <div class="deco-orb deco-orb-4"></div>
+    </div>
+    <div class="container">
+      <div class="section-label reveal-up" id="svc-label">WHAT I OFFER</div>
+      <h2 class="section-title reveal-up" id="svc-title">What I Can Do</h2>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal-card" id="svc-1">
+          <div class="service-glow" aria-hidden="true"></div>
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2" />
+              <path d="M24 8C24 8 18 16 18 24C18 32 24 40 24 40" stroke="currentColor" stroke-width="2" />
+              <path d="M24 8C24 8 30 16 30 24C30 32 24 40 24 40" stroke="currentColor" stroke-width="2" />
+              <line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="2" />
+              <line x1="10" y1="16" x2="38" y2="16" stroke="currentColor" stroke-width="2" />
+              <line x1="10" y1="32" x2="38" y2="32" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <h3>Web Development</h3>
+          <p>Building modern, responsive and interactive websites using HTML, CSS and JavaScript.</p>
+          <div class="service-accent-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="service-card reveal-card" id="svc-2">
+          <div class="service-glow" aria-hidden="true"></div>
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="14" cy="14" r="5" fill="currentColor" opacity="0.7" />
+              <circle cx="34" cy="14" r="5" fill="currentColor" opacity="0.9" />
+              <circle cx="14" cy="34" r="5" fill="currentColor" opacity="0.9" />
+              <circle cx="34" cy="34" r="5" fill="currentColor" opacity="0.5" />
+              <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <h3>Minecraft Server Development</h3>
+          <p>Creating and managing Minecraft servers, configurations, plugins and server experiences.</p>
+          <div class="service-accent-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="service-card reveal-card" id="svc-3">
+          <div class="service-glow" aria-hidden="true"></div>
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="4" y="12" width="28" height="24" rx="3" stroke="currentColor" stroke-width="2" />
+              <path d="M32 18L44 12V36L32 30V18Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <circle cx="18" cy="24" r="4" fill="currentColor" opacity="0.6" />
+            </svg>
+          </div>
+          <h3>Discord Server Development</h3>
+          <p>Building and configuring Discord servers, bots, roles, permissions and community systems.</p>
+          <div class="service-accent-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="service-card reveal-card" id="svc-4">
+          <div class="service-glow" aria-hidden="true"></div>
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M24 6L44 16V32L24 42L4 32V16L24 6Z" stroke-linejoin="round" />
+              <path d="M24 6V42" opacity="0.5" />
+              <path d="M4 16L44 16" opacity="0.5" />
+            </svg>
+          </div>
+          <h3>Coding</h3>
+          <p>Programming and experimenting with HTML, CSS, Python and Java.</p>
+          <div class="service-accent-line" aria-hidden="true"></div>
+        </div>
+
+      </div>
+
+      <!-- Skills still being learned — clearly separated from current skills -->
+      <div class="skills-divider reveal-up" aria-hidden="true"><span>Currently Learning</span></div>
+
+      <div class="services-grid">
+
+        <div class="service-card is-upcoming reveal-card" id="svc-5">
+          <span class="skill-badge">Upcoming</span>
+          <div class="service-glow" aria-hidden="true"></div>
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M24 6L44 16V32L24 42L4 32V16L24 6Z" stroke-linejoin="round" />
+              <path d="M24 6V42" opacity="0.5" />
+              <path d="M4 16L44 16" opacity="0.5" />
+            </svg>
+          </div>
+          <h3>Minecraft Modding</h3>
+          <p>Currently exploring Minecraft mod development and working toward creating custom mods.</p>
+          <div class="service-accent-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="service-card is-upcoming reveal-card" id="svc-6">
+          <span class="skill-badge">Upcoming</span>
+          <div class="service-glow" aria-hidden="true"></div>
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="4" y="12" width="28" height="24" rx="3" stroke="currentColor" stroke-width="2" />
+              <path d="M32 18L44 12V36L32 30V18Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <circle cx="18" cy="24" r="4" fill="currentColor" opacity="0.6" />
+            </svg>
+          </div>
+          <h3>Video Editing</h3>
+          <p>An upcoming skill I am learning, focused on video editing, effects and creative content.</p>
+          <div class="service-accent-line" aria-hidden="true"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       CONTACT
+  ====================================================== -->
+  <section id="contact" aria-label="Contact section">
+    <canvas id="contact-canvas" aria-hidden="true"></canvas>
+    <div class="contact-bg-glow" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="section-label reveal-up" id="contact-label">GET IN TOUCH</div>
+      <h2 class="section-title reveal-up" id="contact-title">Let's Build Something</h2>
+      <p class="contact-intro reveal-up">Have an idea? Let's bring it to life.<br>I'm always open to new projects,
+        collaborations and creative conversations.</p>
+
+      <div class="contact-links reveal-up" role="list" aria-label="Contact links">
+        <a href="https://discordapp.com/users/1282254632298479649" class="contact-btn" id="contact-discord"
+          target="_blank" rel="noopener noreferrer" aria-label="Discord profile">
+          <span class="cb-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.11 18.1.124 18.111a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
+            </svg>
+          </span>
+          <span>Discord</span>
+        </a>
+        <a href="https://www.instagram.com/my.soul_ily/" class="contact-btn" id="contact-instagram"
+          aria-label="Instagram profile" target="_blank" rel="noopener noreferrer">
+          <span class="cb-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+            </svg>
+          </span>
+          <span>Instagram</span>
+        </a>
+        <a href="#" class="contact-btn" id="contact-github" role="listitem" aria-label="GitHub">
+          <span class="cb-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+          </span>
+          <span>GitHub</span>
+        </a>
+        <a href="mailto:officialvpurpose@gmail.com" class="contact-btn" id="contact-email"
+          aria-label="Email officialvpurpose@gmail.com">
+          <span class="cb-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </span>
+          <span>Email</span>
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer reveal-up" role="contentinfo">
+        <div class="footer-logo">VIJAY</div>
+        <p>© 2026 Vijay &nbsp;—&nbsp; Crafted with creativity &amp; code.</p>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       PROJECT MODAL & HUD TOAST
+  ====================================================== -->
+  <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-project-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-project-title">Project Title</h3>
+        <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-preview-box" id="modal-preview-icon" hidden aria-hidden="true"></div>
+        <p class="modal-desc" id="modal-project-desc">Project description goes here.</p>
+        <div class="modal-tags" id="modal-project-tags"></div>
+        <div class="modal-actions">
+          <a href="#" class="btn btn-primary btn-small" id="modal-live-link" target="_blank"
+            rel="noopener noreferrer">Launch Demo ↗</a>
+          <button class="btn btn-secondary btn-small" id="modal-dismiss-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cosmic-toast" id="cosmic-toast" aria-live="polite">
+    <span class="toast-dot" aria-hidden="true"></span>
+    <span id="toast-text">Notification message</span>
+  </div>
+
+  <!-- ======================================================
+       SCRIPTS
+  ====================================================== -->
+  <script src="gsap.min.js"></script>
+  <script src="ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
