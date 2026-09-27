@@ -1,0 +1,3733 @@
+/* ============================================================
+   VIJAY PORTFOLIO — FUTURISTIC SCI-FI DESIGN SYSTEM
+   ============================================================ */
+
+/* ── 1. DESIGN TOKENS ──────────────────────────────────────── */
+:root {
+  /* Core palette */
+  --void: #000000;
+  --space: #02020c;
+  --navy-deep: #050b1f;
+  --navy: #0a0f2e;
+  --deep-purple: #130520;
+  --purple: #6b21a8;
+  --purple-br: #9333ea;
+  --purple-light: #a855f7;
+  --violet: #7c3aed;
+  --violet-br: #8b5cf6;
+  --magenta: #d946ef;
+  --magenta-dim: #a21caf;
+  --blue: #1d4ed8;
+  --blue-br: #3b82f6;
+  --white: #ffffff;
+  --white-dim: rgba(255, 255, 255, 0.88);
+  --muted: rgba(255, 255, 255, 0.58);
+  --subtle: rgba(255, 255, 255, 0.28);
+  --faint: rgba(255, 255, 255, 0.10);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(8, 4, 22, 0.60);
+  --glass-bg-light: rgba(147, 51, 234, 0.06);
+  --glass-border: rgba(147, 51, 234, 0.30);
+  --glass-border-h: rgba(147, 51, 234, 0.70);
+  --glass-blur: blur(24px) saturate(160%);
+
+  /* Glow shadows */
+  --glow-xs: 0 0 8px rgba(147, 51, 234, 0.35);
+  --glow-sm: 0 0 18px rgba(147, 51, 234, 0.45);
+  --glow-md: 0 0 35px rgba(147, 51, 234, 0.55), 0 0 70px rgba(147, 51, 234, 0.20);
+  --glow-lg: 0 0 50px rgba(147, 51, 234, 0.65), 0 0 100px rgba(147, 51, 234, 0.30), 0 0 160px rgba(147, 51, 234, 0.12);
+  --glow-txt: 0 0 20px rgba(147, 51, 234, 0.75);
+  --glow-mag: 0 0 20px rgba(217, 70, 239, 0.55), 0 0 45px rgba(217, 70, 239, 0.25);
+
+  /* Typography */
+  --font-display: 'Orbitron', 'Segoe UI', sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+
+  /* Layout */
+  --section-v: clamp(80px, 10vw, 140px);
+  --container-max: 1200px;
+  --container-pad: clamp(20px, 5vw, 64px);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ── 2. RESET ──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+body {
+  background: var(--space);
+  color: var(--white);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--purple), var(--magenta));
+  border-radius: 2px;
+}
+
+/* ── 3. TYPOGRAPHY UTILITIES ──────────────────────────────── */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+}
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  color: var(--magenta);
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  opacity: 0.9;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--white) 0%, var(--violet-br) 45%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 3rem;
+}
+
+/* ── 4. CONTAINER ─────────────────────────────────────────── */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  position: relative;
+  z-index: 2;
+}
+
+/* ── 5. BUTTONS ───────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.88rem 2.2rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(130deg, var(--purple) 0%, var(--magenta) 100%);
+  border: 1px solid rgba(217, 70, 239, 0.4);
+  box-shadow: var(--glow-sm);
+}
+
+.btn-primary::after {
+  background: linear-gradient(130deg, var(--magenta) 0%, var(--purple) 100%);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: var(--glow-md);
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.btn-secondary::after {
+  background: var(--glass-bg-light);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  border-color: var(--glass-border-h);
+  box-shadow: var(--glow-xs);
+}
+
+.btn-secondary:hover::after {
+  opacity: 1;
+}
+
+.btn-small {
+  padding: 0.48rem 1.25rem;
+  font-size: 0.62rem;
+  border-radius: 30px;
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.btn-small:hover {
+  border-color: var(--glass-border-h);
+  box-shadow: var(--glow-xs);
+  transform: translateY(-2px);
+}
+
+/* "Coming!" state — a real <button disabled>, so it never navigates and
+   never emits a fake/empty URL. Keeps the card's visual language intact. */
+.btn-coming,
+.btn-coming:hover,
+.btn-coming:disabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.48rem 1.25rem;
+  border-radius: 30px;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  background: rgba(217, 70, 239, 0.08);
+  border: 1px dashed rgba(217, 70, 239, 0.45);
+  box-shadow: 0 0 10px rgba(217, 70, 239, 0.18);
+  cursor: not-allowed;
+  opacity: 0.85;
+  transform: none;
+}
+
+/* ── 6. NAVBAR ────────────────────────────────────────────── */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 1.1rem 0;
+  transition: all 0.4s var(--ease-out);
+}
+
+#navbar.scrolled {
+  background: rgba(2, 2, 15, 0.78);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 0.65rem 0;
+  box-shadow: 0 4px 40px rgba(147, 51, 234, 0.12);
+}
+
+.nav-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  background: linear-gradient(135deg, var(--white), var(--violet-br));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: pointer;
+  text-shadow: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: 0.63rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--purple-br), var(--magenta));
+  box-shadow: 0 0 8px var(--purple-br);
+  transition: width 0.35s var(--ease-out);
+}
+
+.nav-links a:hover {
+  color: var(--white);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.35s var(--ease-out);
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ── 7. MOBILE MENU ───────────────────────────────────────── */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(320px, 82vw);
+  height: 100dvh;
+  z-index: 890;
+  background: rgba(4, 2, 18, 0.98);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-left: 1px solid var(--glass-border);
+  transition: right 0.42s var(--ease-out);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  text-align: center;
+}
+
+.mobile-link {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.mobile-link:hover {
+  color: var(--white);
+  text-shadow: var(--glow-txt);
+  transform: translateX(4px);
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 880;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.menu-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── 8. HERO SECTION ──────────────────────────────────────── */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Planet background - fixed celestial layer during hero & identity journey */
+.hero-bg {
+  position: fixed;
+  inset: -5%;
+  /* extra space for parallax movement */
+  background-image: url('first.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Multi-layer overlay for text legibility */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%, transparent 25%, rgba(2, 2, 15, 0.45) 100%),
+    linear-gradient(to bottom,
+      rgba(2, 2, 15, 0.20) 0%,
+      transparent 30%,
+      rgba(2, 2, 15, 0.35) 65%,
+      rgba(2, 2, 15, 0.90) 90%,
+      var(--space) 100%);
+  z-index: 1;
+}
+
+/* Star canvas (particles) */
+#star-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Floating micro-particles */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 2rem;
+  max-width: 960px;
+  width: 100%;
+}
+
+.hero-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.55rem, 1.5vw, 0.72rem);
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  color: var(--magenta);
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  opacity: 0;
+  animation: heroFadeUp 1s ease 0.4s forwards;
+}
+
+.hero-title {
+  font-size: clamp(5rem, 18vw, 12rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 0.95;
+  background: linear-gradient(140deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(197, 157, 255, 1) 25%,
+      rgba(139, 92, 246, 1) 50%,
+      rgba(217, 70, 239, 1) 75%,
+      rgba(147, 51, 234, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 50px rgba(147, 51, 234, 0.65));
+  margin-bottom: 1.4rem;
+  opacity: 0;
+  animation: heroTitleReveal 1.3s ease 0.7s forwards;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(0.8rem, 2.5vw, 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--white-dim);
+  margin-bottom: 1.4rem;
+  opacity: 0;
+  animation: heroFadeUp 1s ease 1.1s forwards;
+}
+
+.hero-intro {
+  font-size: clamp(0.92rem, 2vw, 1.08rem);
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 2.8rem;
+  line-height: 1.85;
+  opacity: 0;
+  animation: heroFadeUp 1s ease 1.35s forwards;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroFadeUp 1s ease 1.6s forwards;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: heroFadeUp 1s ease 2.2s forwards;
+}
+
+.scroll-indicator span {
+  font-family: var(--font-display);
+  font-size: 0.52rem;
+  letter-spacing: 0.38em;
+  color: var(--subtle);
+  text-transform: uppercase;
+}
+
+.scroll-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--purple-br);
+  box-shadow: var(--glow-xs);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ── 9. IDENTITY SECTION & CONTENT ────────────────────────── */
+.identity-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 0 var(--container-pad);
+  margin-bottom: 5rem;
+}
+
+/* Eyebrow label: smaller, with a subtle magenta/violet bloom */
+#identity-label {
+  margin-bottom: 1rem;
+  color: #e9d5ff;
+  text-shadow: 0 0 14px rgba(217, 70, 239, 0.45), 0 0 30px rgba(147, 51, 234, 0.30);
+}
+
+/* Heading: white -> lavender -> electric violet, with a soft glow behind
+   the glyphs. drop-shadow (not text-shadow) because the text is
+   background-clipped, so text-shadow would be masked out. */
+#identity-title {
+  margin-bottom: 3.4rem;
+  background: linear-gradient(115deg,
+      #ffffff 0%,
+      #e9d5ff 26%,
+      #c084fc 52%,
+      #8b5cf6 78%,
+      #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 18px rgba(147, 51, 234, 0.42));
+}
+
+/* Gradient text gently reveals on entry — the clip window sweeps across
+   so the colour itself appears to wash in, rather than a plain fade. */
+.identity-content .section-label,
+.identity-content #identity-title {
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-out);
+}
+
+.identity-content.in-view .section-label {
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+.identity-content.in-view #identity-title {
+  opacity: 1;
+  transition-delay: 0.28s;
+}
+
+/* Node diagram */
+.identity-nodes {
+  position: relative;
+  width: min(680px, 92vw);
+  height: min(470px, 66vw);
+  margin: 0 auto;
+  /* Generous breathing room so the rings and glows never feel crowded */
+  padding: 1.5rem 0;
+}
+
+/* ── Cinematic lighting stack (all decorative, z-index 0) ─────
+   Layered left-to-right and back-to-front so the composition reads as
+   lit from several sources rather than one flat purple wash. */
+.node-aura {
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(ellipse 48% 44% at 50% 48%,
+      rgba(147, 51, 234, 0.22) 0%,
+      rgba(124, 58, 237, 0.11) 38%,
+      rgba(10, 15, 46, 0.05) 62%,
+      transparent 76%);
+  pointer-events: none;
+}
+
+/* Cool blue rim from the upper right */
+.node-light {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.node-light-blue {
+  inset: -4%;
+  background: radial-gradient(ellipse 38% 34% at 84% 14%,
+      rgba(96, 165, 250, 0.15) 0%,
+      rgba(59, 130, 246, 0.06) 45%,
+      transparent 72%);
+}
+
+/* Warm magenta rim from the upper left */
+.node-light-magenta {
+  inset: -4%;
+  background: radial-gradient(ellipse 34% 30% at 14% 16%,
+      rgba(217, 70, 239, 0.11) 0%,
+      rgba(162, 28, 175, 0.045) 46%,
+      transparent 72%);
+}
+
+/* Tight bloom directly behind VIJAY — this is what makes the centre
+   read as the brightest focal point. Slow breathing via nodeBloom. */
+.node-bloom {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(168, 85, 247, 0.30) 0%,
+      rgba(124, 58, 237, 0.16) 34%,
+      rgba(59, 130, 246, 0.07) 56%,
+      transparent 72%);
+  pointer-events: none;
+  animation: nodeBloom 7s ease-in-out infinite;
+}
+
+@keyframes nodeBloom {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.node-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Base connection: thin, elegant, slowly drifting dashes with a soft
+   violet halo. The stroke itself is a violet->blue gradient (SVG defs). */
+.connect-line {
+  stroke-width: 1.35;
+  fill: none;
+  stroke-dasharray: 6 7;
+  stroke-linecap: round;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 3px rgba(147, 51, 234, 0.55));
+  animation: dashFlow 6s linear infinite, lineBreathe 9s ease-in-out infinite;
+}
+
+/* Occasional brightness pulse — very slow so it reads as a living network
+   rather than a blinking indicator. Staggered per line. */
+#line-mgr {
+  animation-delay: 0s, -3s;
+}
+
+#line-age {
+  animation-delay: 0s, -6s;
+}
+
+@keyframes lineBreathe {
+
+  0%,
+  100% {
+    opacity: 0.62;
+  }
+
+  50% {
+    opacity: 0.92;
+  }
+}
+
+/* Travelling energy pulse. Shares the base line's exact geometry (the JS
+   writes both), drawn as a short bright dash that slides outward from
+   VIJAY toward the node. pathLength normalises it so one keyframe works
+   for lines of any length. */
+.flow-line {
+  stroke: #f5f3ff;
+  stroke-width: 1.85;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 0.05 0.95;
+  /* Layered bloom: a tight violet core plus a wider blue-violet halo */
+  filter: drop-shadow(0 0 5px rgba(192, 132, 252, 0.95))
+    drop-shadow(0 0 10px rgba(96, 165, 250, 0.55));
+  /* Held hidden until the entrance sequence starts — see 18c. The pulse
+     must NOT run on page load, or it would be visible before the diagram
+     ever enters the viewport. */
+  opacity: 0;
+}
+
+/* Negative delays stagger the three pulses so they do not fire together.
+   Applied here (not on the base rule) so they only take effect once the
+   in-view animation below actually starts. */
+#flow-mgr {
+  animation-delay: -1.2s;
+}
+
+#flow-age {
+  animation-delay: -2.4s;
+}
+
+/* Nodes */
+.node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-display);
+  user-select: none;
+  z-index: 3;
+}
+
+/* The visual focal point: a violet core lit from within, a blue-violet
+   inner wash, a gradient border and several glow layers beneath it. */
+.node-center {
+  width: 138px;
+  height: 138px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 50% 34%, rgba(168, 85, 247, 0.42) 0%, transparent 58%),
+    radial-gradient(circle at 38% 72%, rgba(96, 165, 250, 0.20) 0%, transparent 56%),
+    radial-gradient(circle at 50% 50%, rgba(30, 15, 62, 0.92) 0%, rgba(6, 4, 20, 0.96) 100%);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  /* Gradient border via a double background — the padding box shows the
+     interior, the border box shows the violet->blue gradient ring. */
+  border: 1.5px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  border-radius: 50%;
+  box-shadow: var(--glow-md), inset 0 0 26px rgba(147, 51, 234, 0.34);
+  font-size: 1.02rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--white);
+  text-shadow: 0 0 12px rgba(192, 132, 252, 0.85), 0 0 26px rgba(147, 51, 234, 0.55);
+  flex-direction: column;
+  animation: nodeCenter 6s ease-in-out infinite;
+}
+
+/* Static multi-layer halo sitting behind the circle. This is what gives
+   the centre its depth before any animation runs. */
+.node-halo {
+  position: absolute;
+  inset: -70px;
+  border-radius: 50%;
+  z-index: -1;
+  background: radial-gradient(circle,
+      rgba(168, 85, 247, 0.22) 0%,
+      rgba(124, 58, 237, 0.13) 30%,
+      rgba(96, 165, 250, 0.06) 50%,
+      transparent 70%);
+  pointer-events: none;
+}
+
+/* Soft highlight sweeping slowly around the border */
+.node-sheen {
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 50%;
+  z-index: 1;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      rgba(233, 213, 255, 0.55) 28deg,
+      rgba(147, 197, 253, 0.30) 52deg,
+      transparent 88deg,
+      transparent 360deg);
+  /* Mask to an outer ring so only the border area lights up */
+  -webkit-mask: radial-gradient(circle, transparent 0 calc(100% - 3px), #000 calc(100% - 3px));
+  mask: radial-gradient(circle, transparent 0 calc(100% - 3px), #000 calc(100% - 3px));
+  pointer-events: none;
+  animation: nodeSheen 11s linear infinite;
+}
+
+@keyframes nodeSheen {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Concentric neon rings — gentle outward expansion and fade. Four rings
+   on a shared slow cadence so the bloom feels layered, not busy. */
+.node-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(168, 85, 247, 0.34);
+  box-shadow: 0 0 14px rgba(147, 51, 234, 0.20), inset 0 0 10px rgba(147, 51, 234, 0.10);
+  animation: ringPulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.node-ring-1 {
+  inset: -15px;
+  animation-delay: 0s;
+}
+
+.node-ring-2 {
+  inset: -32px;
+  border-color: rgba(147, 51, 234, 0.22);
+  animation-delay: -1.75s;
+}
+
+.node-ring-3 {
+  inset: -50px;
+  border-color: rgba(139, 92, 246, 0.14);
+  animation-delay: -3.5s;
+}
+
+/* Faintest, widest ring — carries just a hint of blue-violet */
+.node-ring-4 {
+  inset: -70px;
+  border-color: rgba(96, 165, 250, 0.10);
+  animation-delay: -5.25s;
+}
+
+/* Skill nodes: premium glass/neon cards. Dark translucent interior, a
+   violet->blue gradient border (via the .sat-border layer), inner
+   top-edge highlight and a soft neon bloom. */
+.node-satellite {
+  width: 132px;
+  min-height: 78px;
+  padding: 0.7rem 0.85rem;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 0%, rgba(147, 51, 234, 0.16) 0%, transparent 62%),
+    linear-gradient(165deg, rgba(26, 13, 52, 0.78) 0%, rgba(9, 6, 26, 0.86) 100%);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: var(--white-dim);
+  box-shadow: 0 0 16px rgba(147, 51, 234, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: box-shadow 0.4s var(--ease-out), color 0.4s ease;
+  will-change: transform;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* The gradient border layer. Animated background-position slides the
+   purple->violet ramp slowly around the card edge. */
+.sat-border {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(115deg,
+      rgba(192, 132, 252, 0.70) 0%,
+      rgba(139, 92, 246, 0.55) 28%,
+      rgba(96, 165, 250, 0.42) 52%,
+      rgba(168, 85, 247, 0.62) 76%,
+      rgba(217, 70, 239, 0.45) 100%);
+  background-size: 260% 260%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: borderDrift 14s ease-in-out infinite;
+}
+
+@keyframes borderDrift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Highlight that sweeps across the card on hover only */
+.sat-sheen {
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 65%;
+  height: 100%;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(100deg,
+      rgba(233, 213, 255, 0) 0%,
+      rgba(233, 213, 255, 0.14) 50%,
+      rgba(233, 213, 255, 0) 100%);
+  transform: skewX(-18deg);
+  transition: left 0.7s var(--ease-out);
+  pointer-events: none;
+}
+
+/* Hover scales and brightens without disturbing the float keyframes:
+   the animation owns transform, so the hover lift uses a filter + colour
+   shift instead of fighting it for the same property. */
+.node-satellite:hover {
+  box-shadow: 0 0 30px rgba(147, 51, 234, 0.40), 0 0 60px rgba(96, 165, 250, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  color: var(--white);
+  filter: brightness(1.16) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+}
+
+.node-satellite:hover .sat-border {
+  background-position: 100% 50%;
+  filter: brightness(1.45);
+}
+
+.node-satellite:hover .sat-sheen {
+  left: 135%;
+}
+
+/* Rounded-square icon holder with a violet neon glow. Sized once here so
+   all three icons stay identical across every breakpoint. */
+.node-sat-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(168, 85, 247, 0.22) 0%, transparent 68%),
+    rgba(147, 51, 234, 0.10);
+  border: 1px solid rgba(168, 85, 247, 0.34);
+  box-shadow: inset 0 0 12px rgba(147, 51, 234, 0.16), 0 0 10px rgba(147, 51, 234, 0.14);
+  color: var(--purple-light);
+  overflow: hidden;
+  transition: color 0.4s ease, border-color 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out);
+}
+
+/* Gradient stroke: the SVG paints its strokes with a violet->blue ramp
+   instead of a flat colour. currentColor fallback keeps it readable in
+   any browser without SVG gradient support. */
+.node-sat-icon svg {
+  position: relative;
+  z-index: 1;
+  width: 17px;
+  height: 17px;
+  display: block;
+  stroke: url(#icon-grad);
+  /* Thin neon outline: tight violet core + wider blue-violet halo */
+  filter: drop-shadow(0 0 4px rgba(192, 132, 252, 0.85))
+    drop-shadow(0 0 9px rgba(96, 165, 250, 0.35));
+}
+
+/* Animated highlight travelling across the icon tile */
+.node-sat-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(100deg,
+      rgba(233, 213, 255, 0) 0%,
+      rgba(233, 213, 255, 0.28) 50%,
+      rgba(233, 213, 255, 0) 100%);
+  transform: skewX(-20deg);
+  animation: iconGlint 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes iconGlint {
+
+  0%,
+  72% {
+    left: -140%;
+  }
+
+  88%,
+  100% {
+    left: 145%;
+  }
+}
+
+.node-satellite:hover .node-sat-icon {
+  color: var(--white);
+  border-color: rgba(192, 132, 252, 0.75);
+  box-shadow: inset 0 0 16px rgba(147, 51, 234, 0.30), 0 0 18px rgba(168, 85, 247, 0.42);
+}
+
+.node-satellite:hover .node-sat-icon svg {
+  filter: drop-shadow(0 0 6px rgba(192, 132, 252, 1))
+    drop-shadow(0 0 14px rgba(147, 197, 253, 0.55));
+}
+
+/* Satellite positions — balanced triangle around the centre */
+.node-dev {
+  top: 0;
+  right: 2%;
+  animation: nodeSat1 6.5s ease-in-out infinite;
+}
+
+.node-mgr {
+  top: 0;
+  left: 2%;
+  animation: nodeSat2 7s ease-in-out infinite;
+}
+
+.node-age {
+  bottom: 0;
+  left: calc(50% - 66px);
+  animation: nodeSat3 6s ease-in-out infinite;
+}
+
+/* Node floating particles */
+.node-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: var(--purple-br);
+  box-shadow: 0 0 6px var(--purple-br);
+}
+
+.np-1 {
+  width: 4px;
+  height: 4px;
+  top: 15%;
+  left: 30%;
+  animation: particleFloat1 5s ease-in-out infinite;
+}
+
+.np-2 {
+  width: 3px;
+  height: 3px;
+  top: 25%;
+  right: 35%;
+  animation: particleFloat2 6s ease-in-out infinite;
+  background: var(--magenta);
+  box-shadow: 0 0 6px var(--magenta);
+}
+
+.np-3 {
+  width: 5px;
+  height: 5px;
+  bottom: 20%;
+  left: 20%;
+  animation: particleFloat3 4.5s ease-in-out infinite;
+}
+
+.np-4 {
+  width: 3px;
+  height: 3px;
+  top: 60%;
+  right: 20%;
+  animation: particleFloat4 7s ease-in-out infinite;
+  background: var(--blue-br);
+  box-shadow: 0 0 6px var(--blue-br);
+}
+
+.np-5 {
+  width: 4px;
+  height: 4px;
+  top: 40%;
+  left: 10%;
+  animation: particleFloat5 5.5s ease-in-out infinite;
+  background: var(--magenta);
+  box-shadow: 0 0 6px var(--magenta);
+}
+
+.np-6 {
+  width: 3px;
+  height: 3px;
+  bottom: 30%;
+  right: 12%;
+  animation: particleFloat6 6.5s ease-in-out infinite;
+}
+
+/* Extra motes for depth — deliberately faint so they read as dust, not UI */
+.np-7 {
+  width: 2px;
+  height: 2px;
+  top: 8%;
+  left: 50%;
+  opacity: 0.5;
+  animation: particleFloat2 8s ease-in-out infinite;
+  background: var(--violet-br);
+  box-shadow: 0 0 5px var(--violet-br);
+}
+
+.np-8 {
+  width: 2px;
+  height: 2px;
+  bottom: 10%;
+  left: 32%;
+  opacity: 0.45;
+  animation: particleFloat4 9s ease-in-out infinite;
+  background: var(--blue-br);
+  box-shadow: 0 0 5px var(--blue-br);
+}
+
+.np-9 {
+  width: 2px;
+  height: 2px;
+  top: 55%;
+  right: 6%;
+  opacity: 0.45;
+  animation: particleFloat5 7.5s ease-in-out infinite;
+  background: var(--violet-br);
+  box-shadow: 0 0 5px var(--violet-br);
+}
+
+/* Larger, out-of-focus motes — blurred so they read as nearer the camera
+   and give the field some depth without adding visual noise. */
+.np-10 {
+  width: 5px;
+  height: 5px;
+  top: 34%;
+  left: 6%;
+  opacity: 0.30;
+  animation: particleFloat1 9.5s ease-in-out infinite;
+  background: var(--purple-light);
+  box-shadow: 0 0 10px var(--purple-light);
+}
+
+.np-11 {
+  width: 6px;
+  height: 6px;
+  bottom: 16%;
+  right: 26%;
+  opacity: 0.24;
+  animation: particleFloat3 11s ease-in-out infinite;
+  background: var(--blue-br);
+  box-shadow: 0 0 12px var(--blue-br);
+}
+
+.np-12 {
+  width: 2px;
+  height: 2px;
+  top: 20%;
+  left: 42%;
+  opacity: 0.5;
+  animation: particleFloat6 8.5s ease-in-out infinite;
+  background: var(--magenta);
+  box-shadow: 0 0 5px var(--magenta);
+}
+
+/* Soft bloom on the blurred motes */
+.node-particle.is-bloom {
+  filter: blur(1.6px);
+}
+
+/* ── 12. DECORATION ORBS ──────────────────────────────────── */
+/* About Me: journey / achievements block that follows the profile card */
+.about-journey {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  text-align: center;
+}
+
+.about-journey-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, var(--white) 0%, var(--violet-br) 50%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 3rem;
+}
+
+/* Glowing divider between the About card and the timeline keeps the
+   dark purple space theme continuous. */
+.about-journey::before {
+  content: '';
+  display: block;
+  width: min(420px, 70vw);
+  height: 1px;
+  margin: 0 auto 3.5rem;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(147, 51, 234, 0.7),
+      rgba(217, 70, 239, 0.5),
+      transparent);
+  box-shadow: 0 0 14px rgba(147, 51, 234, 0.45);
+}
+
+.deco-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.deco-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(147, 51, 234, 0.09);
+  top: -10%;
+  left: -10%;
+}
+
+.deco-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(217, 70, 239, 0.07);
+  bottom: 0;
+  right: 5%;
+}
+
+.deco-orb-3 {
+  width: 500px;
+  height: 500px;
+  background: rgba(147, 51, 234, 0.08);
+  top: -5%;
+  right: -8%;
+}
+
+.deco-orb-4 {
+  width: 350px;
+  height: 350px;
+  background: rgba(59, 130, 246, 0.06);
+  bottom: 0;
+  left: -5%;
+}
+
+/* ── 13. ABOUT SECTION ───────────────────────────────────── */
+#about {
+  position: relative;
+  z-index: 10;
+  padding: var(--section-v) 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--space) 0%, var(--navy-deep) 50%, var(--space) 100%);
+}
+
+.about-bg-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.about-wrapper {
+  /* Column, so the experience card and area chips stack UNDER the glass
+     card. As a flex row they became side-by-side siblings and the
+     experience card was crushed into a narrow column. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 6rem;
+}
+
+/* The glass card keeps its own centred max-width inside the column */
+.about-wrapper > .about-glass {
+  max-width: 900px;
+}
+
+/* Experience card and chips share the glass card's width so the section
+   reads as one aligned stack. */
+.about-wrapper > .exp-card,
+.about-wrapper > .about-areas {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 0;
+}
+
+.about-glass {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 3rem 3.5rem;
+  box-shadow: var(--glow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(147, 51, 234, 0.6), rgba(217, 70, 239, 0.4), transparent);
+}
+
+/* Avatar */
+.about-avatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-rings {
+  position: absolute;
+  inset: 0;
+}
+
+.avatar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(147, 51, 234, 0.4);
+}
+
+.ar-1 {
+  inset: -12px;
+  animation: ringPulse 3s ease-in-out infinite;
+}
+
+.ar-2 {
+  inset: -26px;
+  border-color: rgba(147, 51, 234, 0.22);
+  animation: ringPulse 3s ease-in-out infinite 1s;
+}
+
+.ar-3 {
+  inset: -42px;
+  border-color: rgba(147, 51, 234, 0.10);
+  animation: ringPulse 3s ease-in-out infinite 2s;
+}
+
+.avatar-inner {
+  position: relative;
+  z-index: 2;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--magenta));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 900;
+  box-shadow: var(--glow-lg);
+}
+
+/* About text */
+.about-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, var(--white), var(--violet-br));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.82;
+  margin-bottom: 0.85rem;
+}
+
+.about-text strong {
+  color: var(--purple-light);
+  font-weight: 600;
+}
+
+.about-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--purple-br), var(--magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(147, 51, 234, 0.5));
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--subtle);
+  text-transform: uppercase;
+}
+
+/* ── 13b. WHO AM I — PREMIUM EXPERIENCE CARD & AREA CHIPS ────
+   Extends section 13. The gold accent is held in local tokens ON the
+   experience card, so the warm palette cannot reach the rest of the
+   section — the purple cosmic theme stays dominant. */
+.exp-card {
+  --gold: #f2b64b;
+  --gold-soft: rgba(242, 182, 75, 0.34);
+  --gold-glow: rgba(242, 182, 75, 0.16);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: 1.6rem;
+  padding: 1.1rem 1.5rem;
+  border-radius: 18px;
+  /* Dark translucent interior with a faint amber top-light */
+  background: linear-gradient(180deg, rgba(34, 22, 8, 0.72) 0%, rgba(10, 6, 24, 0.86) 100%);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid var(--gold-soft);
+  box-shadow: 0 0 16px var(--gold-glow), inset 0 1px 0 rgba(242, 182, 75, 0.12);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+/* Top edge highlight, matching .about-glass::before's treatment */
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(242, 182, 75, 0.65), rgba(242, 182, 75, 0.25), transparent);
+}
+
+/* Soft shimmer that sweeps across on hover — one subtle pass */
+.exp-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(100deg,
+      rgba(255, 226, 160, 0) 0%,
+      rgba(255, 226, 160, 0.13) 50%,
+      rgba(255, 226, 160, 0) 100%);
+  transform: skewX(-18deg);
+  transition: left 0.75s var(--ease-out);
+  pointer-events: none;
+}
+
+/* Hover lift and shimmer live in section 18b, after the reveal system, so
+   the hover transform is not outranked by .reveal-left.in-view. */
+
+/* Very slow, very faint glow pulse — premium, not blinking.
+   The pulse runs on a child pseudo-element rather than on the card
+   itself: an animation on the card would keep overriding the hover
+   transform (animations beat normal declarations), which killed the
+   lift. Keeping it separate lets both effects coexist. */
+.exp-card.in-view .exp-glow {
+  animation: expPulse 4.5s ease-in-out infinite;
+}
+
+.exp-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  box-shadow: 0 0 16px var(--gold-glow), inset 0 1px 0 rgba(242, 182, 75, 0.12);
+  transition: opacity 0.6s var(--ease-out);
+  pointer-events: none;
+}
+
+.exp-card.in-view .exp-glow {
+  opacity: 1;
+}
+
+@keyframes expPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 16px var(--gold-glow), inset 0 1px 0 rgba(242, 182, 75, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(242, 182, 75, 0.24), inset 0 1px 0 rgba(242, 182, 75, 0.16);
+  }
+}
+
+.exp-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  background: rgba(242, 182, 75, 0.10);
+  border: 1px solid rgba(242, 182, 75, 0.28);
+  box-shadow: inset 0 0 14px rgba(242, 182, 75, 0.10);
+}
+
+.exp-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.exp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.exp-label {
+  font-family: var(--font-display);
+  font-size: 0.56rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(242, 182, 75, 0.75);
+}
+
+.exp-value {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--white) 0%, #f2b64b 70%, #ffd98a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(242, 182, 75, 0.35));
+}
+
+.exp-sub {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+/* ── Development-area chips (purple theme) ─────────────────── */
+.about-areas {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.area-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  background: var(--glass-bg-light);
+  border: 1px solid rgba(147, 51, 234, 0.24);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s var(--ease-out);
+  min-width: 0;
+}
+
+.area-chip:hover {
+  border-color: var(--glass-border-h);
+  box-shadow: var(--glow-xs);
+  transform: translateY(-2px);
+}
+
+.area-dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--purple-br);
+  box-shadow: 0 0 8px var(--purple-br);
+}
+
+.area-name {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  color: var(--white-dim);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* The coding chip carries a secondary language list */
+.area-chip-code {
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+}
+
+.area-sub {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: var(--muted);
+  padding-left: 0.6rem;
+  border-left: 1px solid rgba(147, 51, 234, 0.3);
+  margin-left: 0.1rem;
+}
+
+/* ── 14. PROJECTS SECTION ─────────────────────────────────── */
+#projects {
+  position: relative;
+  z-index: 10;
+  padding: var(--section-v) 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--space) 0%, var(--deep-purple) 50%, var(--space) 100%);
+}
+
+.projects-bg-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out), border-color 0.4s ease, box-shadow 0.4s ease;
+  cursor: default;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--glass-border-h);
+  box-shadow: var(--glow-md);
+}
+
+.project-preview {
+  height: 170px;
+  background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Real image thumbnail for a project card. Uses object-fit: cover so the
+   existing planet asset fills the fixed-height preview without stretching. */
+.project-preview-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  z-index: 0;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.project-card:hover .project-preview-img {
+  transform: scale(1.06);
+}
+
+/* dc.png and mc.png are illustrations with centred subjects, so they are centred
+   rather than offset like the planet photo. */
+#proj-3 .project-preview-img,
+#proj-4 .project-preview-img {
+  object-position: center;
+}
+
+.project-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(5, 2, 22, 0.85) 100%);
+  z-index: 1;
+}
+
+.project-info {
+  padding: 1.6rem;
+}
+
+.project-info h3 {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 0.55rem;
+}
+
+.project-info p {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+/* Inline stat highlight inside a project description. Uses the site's
+   purple->gold ramp, matching the gold accent already on the project tags.
+   Scoped to .proj-stat so it cannot affect other cards or paragraphs. */
+.project-info .proj-stat {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 0.92em;
+  letter-spacing: 0.02em;
+  background: linear-gradient(120deg, #c084fc 0%, #e9d5ff 38%, #f2b64b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Text is background-clipped, so the glow must be a drop-shadow */
+  filter: drop-shadow(0 0 7px rgba(242, 182, 75, 0.45));
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+/* ── Premium gold/amber project tags ────────────────────────
+   Same treatment as the Minecraft popup's server blocks, adapted to the
+   small pill tags. The accent is held in local tokens ON the tag, so the
+   warm palette can only ever appear here — the cards, their images,
+   titles, buttons and the rest of the purple cosmic theme are untouched. */
+.project-tags > span,
+.project-tags > .tag-more {
+  --gold: #f2b64b;
+  --gold-soft: rgba(242, 182, 75, 0.34);
+  --gold-glow: rgba(242, 182, 75, 0.16);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  padding: 0.28rem 0.75rem;
+  border-radius: 30px;
+  /* Near-black plum interior, faintly amber-lit from the top */
+  background: linear-gradient(180deg, rgba(34, 22, 8, 0.92) 0%, rgba(14, 8, 20, 0.96) 100%);
+  border: 1px solid var(--gold-soft);
+  color: var(--white-dim);
+  box-shadow: 0 0 10px var(--gold-glow), inset 0 1px 0 rgba(242, 182, 75, 0.10);
+  /* Only transform/colour animate — never the layout box, so the pills
+     cannot reflow or push the row into a horizontal overflow. */
+  transition: transform 0.26s var(--ease-out), box-shadow 0.26s ease,
+    border-color 0.26s ease, color 0.26s ease;
+  will-change: transform;
+
+  /* Held hidden until the card scrolls in, so the stagger below actually
+     reads as an entrance. The card owns the reveal state (.reveal-card
+     .in-view); this just follows it. */
+  opacity: 0;
+}
+
+.project-card.in-view .project-tags > span,
+.project-card.in-view .project-tags > .tag-more {
+  opacity: 1;
+}
+
+/* Soft inner highlight along the top edge of the border */
+.project-tags > span::before,
+.project-tags > .tag-more::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(242, 182, 75, 0.09) 0%, rgba(242, 182, 75, 0) 62%);
+  pointer-events: none;
+}
+
+/* Very subtle premium shine that sweeps across on hover */
+.project-tags > span::after,
+.project-tags > .tag-more::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(100deg,
+      rgba(255, 226, 160, 0) 0%,
+      rgba(255, 226, 160, 0.12) 50%,
+      rgba(255, 226, 160, 0) 100%);
+  transform: skewX(-18deg);
+  transition: left 0.65s var(--ease-out);
+  pointer-events: none;
+}
+
+.project-tags > span:hover,
+.project-tags > .tag-more:hover,
+.project-tags > span:focus-visible,
+.project-tags > .tag-more:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--gold);
+  color: var(--white);
+  box-shadow: 0 0 18px rgba(242, 182, 75, 0.30),
+    inset 0 1px 0 rgba(242, 182, 75, 0.18);
+}
+
+.project-tags > span:hover::after,
+.project-tags > .tag-more:hover::after,
+.project-tags > span:focus-visible::after,
+.project-tags > .tag-more:focus-visible::after {
+  left: 130%;
+}
+
+/* ── Staggered entrance, tied to the card's existing reveal ───
+   The card already fades in when it scrolls into view (.reveal-card
+   .in-view). Gating on that state means the tags animate on entry and
+   again on every scroll back into view, with no extra JS. The delay is
+   derived from each tag's --i index (set in JS), so the sequence stays
+   correct whatever the tag count. 'both' holds the from-state during the
+   delay, which is why the tags need no separate hidden state. */
+.project-card.in-view .project-tags > span,
+.project-card.in-view .project-tags > .tag-more {
+  animation: tagIn 0.4s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 60ms + 180ms);
+}
+
+@keyframes tagIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── 15. EXPERIENCE / TIMELINE ────────────────────────────── */
+#experience {
+  position: relative;
+  z-index: 10;
+  padding: var(--section-v) 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--space) 0%, var(--navy) 50%, var(--space) 100%);
+}
+
+.experience-bg-deco {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(147, 51, 234, 0.07) 0%, transparent 70%);
+}
+
+.timeline {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* Vertical glowing line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(147, 51, 234, 0.8) 15%,
+      rgba(217, 70, 239, 0.6) 50%,
+      rgba(147, 51, 234, 0.8) 85%,
+      transparent 100%);
+  box-shadow: 0 0 10px rgba(147, 51, 234, 0.3);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2.8rem;
+  position: relative;
+}
+
+.tl-left {
+  flex-direction: row;
+  padding-right: calc(50% + 2.5rem);
+}
+
+.tl-right {
+  flex-direction: row-reverse;
+  padding-left: calc(50% + 2.5rem);
+}
+
+/* Timeline dot */
+.tl-dot {
+  position: absolute;
+  left: 50%;
+  top: 1.2rem;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--space);
+  border: 2px solid var(--purple-br);
+  box-shadow: var(--glow-sm);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tl-dot-inner {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--purple-br);
+  box-shadow: var(--glow-xs);
+  animation: dotPulse 2.5s ease-in-out infinite;
+}
+
+/* Timeline card */
+.tl-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1.4rem 1.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tl-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(147, 51, 234, 0.5), transparent);
+}
+
+.tl-card:hover {
+  border-color: var(--glass-border-h);
+  box-shadow: var(--glow-xs);
+}
+
+.tl-year {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--magenta);
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.tl-card h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 0.45rem;
+}
+
+.tl-card p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ── 16. SERVICES SECTION ─────────────────────────────────── */
+#services {
+  position: relative;
+  z-index: 10;
+  padding: var(--section-v) 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--space) 0%, var(--navy-deep) 50%, var(--space) 100%);
+}
+
+.services-bg-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.4s var(--ease-out), border-color 0.4s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(147, 51, 234, 0.5), rgba(217, 70, 239, 0.4), transparent);
+}
+
+.service-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.07) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) rotateX(4deg);
+  border-color: var(--glass-border-h);
+  box-shadow: var(--glow-md);
+}
+
+.service-card:hover .service-glow {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  color: var(--purple-br);
+  margin: 0 auto 1.3rem;
+  filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.7));
+  transition: transform 0.4s var(--ease-out), filter 0.4s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.18) rotate(-6deg);
+  filter: drop-shadow(0 0 16px rgba(147, 51, 234, 1));
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-bottom: 0.7rem;
+}
+
+.service-card p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+/* Animated accent line at bottom */
+.service-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(to right, var(--purple-br), var(--magenta));
+  box-shadow: var(--glow-xs);
+  transition: width 0.45s var(--ease-out);
+  border-radius: 0 0 22px 22px;
+}
+
+.service-card:hover .service-accent-line {
+  width: 100%;
+}
+
+/* "UPCOMING" skill badge — marks skills still being learned so they read
+   clearly as future work rather than completed services. */
+.skill-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.26rem 0.7rem;
+  border-radius: 30px;
+  color: var(--magenta);
+  background: rgba(217, 70, 239, 0.10);
+  border: 1px solid rgba(217, 70, 239, 0.45);
+  box-shadow: 0 0 12px rgba(217, 70, 239, 0.25);
+  z-index: 3;
+}
+
+/* Upcoming cards keep the same card design but read slightly cooler/dimmer */
+.service-card.is-upcoming {
+  border-style: dashed;
+  border-color: rgba(147, 51, 234, 0.34);
+}
+
+.service-card.is-upcoming .service-icon {
+  color: var(--violet-br);
+  opacity: 0.85;
+}
+
+/* Divider + heading that introduces the upcoming skills group */
+.skills-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 3.5rem 0 1.8rem;
+}
+
+.skills-divider::before,
+.skills-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(147, 51, 234, 0.55), transparent);
+  box-shadow: 0 0 10px rgba(147, 51, 234, 0.3);
+}
+
+.skills-divider span {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  white-space: nowrap;
+}
+
+/* ── 17. CONTACT SECTION ──────────────────────────────────── */
+#contact {
+  position: relative;
+  z-index: 10;
+  padding: var(--section-v) 0 4rem;
+  overflow: hidden;
+  text-align: center;
+  min-height: 80dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--space) 0%, var(--navy) 60%, var(--void) 100%);
+}
+
+.contact-bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(147, 51, 234, 0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(217, 70, 239, 0.07) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+#contact-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-intro {
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 3rem;
+  line-height: 1.88;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 4.5rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.88rem 1.8rem;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: all 0.35s var(--ease-out);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(147, 51, 234, 0.1);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.contact-btn > * {
+  pointer-events: none;
+}
+
+.contact-btn:hover {
+  border-color: var(--glass-border-h);
+  box-shadow: var(--glow-md);
+  transform: translateY(-5px);
+  color: var(--white);
+}
+
+.contact-btn:hover::before {
+  opacity: 1;
+}
+
+.cb-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cb-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid rgba(147, 51, 234, 0.15);
+  padding-top: 2rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  background: linear-gradient(135deg, var(--white), var(--violet-br));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.65rem;
+}
+
+.site-footer p {
+  font-size: 0.78rem;
+  color: var(--subtle);
+  letter-spacing: 0.1em;
+}
+
+/* ── 18. REVEAL SYSTEM ────────────────────────────────────── */
+.reveal-up,
+.reveal-card,
+.reveal-tl {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+}
+
+.reveal-up.in-view,
+.reveal-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slides in from the left — used by the Who am I experience card.
+   The ::before overlay below is shared with .about-glass, so this must
+   not introduce a transform on the card itself. */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-44px);
+  transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+}
+
+.reveal-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Children of a .reveal-stagger container appear one after another once
+   the container is in view. --i (set in JS) drives the order. */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.reveal-stagger.in-view > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 18b. WHO AM I EXPERIENCE CARD — HOVER ───────────────────
+   Deliberately placed after the reveal system: .reveal-left.in-view
+   declares transform at the same specificity, so the hover lift has to
+   come later in the cascade to win while the entrance is settled. */
+.exp-card:hover,
+.exp-card:focus-visible {
+  transform: translateY(-3px) scale(1.012);
+  border-color: var(--gold);
+  box-shadow: 0 0 26px rgba(242, 182, 75, 0.28), inset 0 1px 0 rgba(242, 182, 75, 0.18);
+  outline: none;
+}
+
+.exp-card:hover::after,
+.exp-card:focus-visible::after {
+  left: 130%;
+}
+
+/* Once revealed, hand the transform transition back to the quicker
+   hover timing so the lift feels responsive rather than sluggish. */
+.exp-card.in-view {
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* ── 18c. WHO AM I — STAGED SCROLL ENTRANCE ──────────────────
+   Sequence when the node system scrolls into view:
+     heading (0.25s) -> VIJAY (0.35s) -> lines draw (0.55s)
+     -> skill nodes (0.75s+). Total settle is ~1.3s.
+   All of it is gated on .identity-nodes.in-view, so nothing here fires
+   until the diagram is actually on screen. */
+.identity-nodes .enter-vijay,
+.identity-nodes .enter-sat,
+.identity-nodes .connect-line,
+.identity-nodes .flow-line {
+  opacity: 0;
+}
+
+.identity-nodes.in-view .enter-vijay {
+  animation: enterVijay 0.7s var(--ease-out) 0.35s both;
+}
+
+.identity-nodes.in-view .enter-sat {
+  animation: enterSat 0.6s var(--ease-out) both;
+}
+
+.identity-nodes.in-view .node-dev {
+  animation-delay: 0.75s;
+}
+
+.identity-nodes.in-view .node-mgr {
+  animation-delay: 0.88s;
+}
+
+.identity-nodes.in-view .node-age {
+  animation-delay: 1s;
+}
+
+/* Lines draw outward from the centre using a dash reveal */
+.identity-nodes.in-view .connect-line {
+  animation: lineDraw 0.85s var(--ease-out) 0.55s both, dashFlow 6s linear 1.4s infinite;
+}
+
+.identity-nodes.in-view .flow-line {
+  animation: flowPulse 3.6s linear 1.5s infinite;
+  opacity: 1;
+}
+
+/* Re-apply the per-line stagger after the in-view rule, which resets
+   animation-delay to 1.5s on all three. */
+.identity-nodes.in-view #flow-mgr {
+  animation-delay: 0.3s;
+}
+
+.identity-nodes.in-view #flow-age {
+  animation-delay: -0.9s;
+}
+
+@keyframes enterVijay {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes enterSat {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Runs once, then hands the property back to the drifting dashFlow */
+@keyframes lineDraw {
+  from {
+    stroke-dashoffset: 40;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.75;
+  }
+}
+
+.reveal-tl {
+  transform: translateX(-50px);
+}
+
+.tl-right.reveal-tl {
+  transform: translateX(50px);
+}
+
+.reveal-tl.in-view {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* ── 19. KEYFRAMES ────────────────────────────────────────── */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroTitleReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(30px);
+    filter: blur(24px) drop-shadow(0 0 60px rgba(147, 51, 234, 0.5));
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px) drop-shadow(0 0 50px rgba(147, 51, 234, 0.65));
+  }
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes nodeCenter {
+
+  0%,
+  100% {
+    box-shadow: var(--glow-md), inset 0 0 24px rgba(147, 51, 234, 0.30);
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 55px rgba(147, 51, 234, 0.55), 0 0 110px rgba(147, 51, 234, 0.26), inset 0 0 30px rgba(147, 51, 234, 0.38);
+    transform: translate(-50%, -50%) scale(1.025);
+  }
+}
+
+/* Energy pulse sliding outward from VIJAY. pathLength="1" in the markup
+   means every line shares one 0→1 timeline regardless of real length. */
+@keyframes flowPulse {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: -1;
+    opacity: 0;
+  }
+}
+
+@keyframes nodeSat1 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  33% {
+    transform: translateY(-8px) translateX(4px);
+  }
+
+  66% {
+    transform: translateY(5px) translateX(-3px);
+  }
+}
+
+@keyframes nodeSat2 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  40% {
+    transform: translateY(-6px) translateX(-4px);
+  }
+
+  70% {
+    transform: translateY(7px) translateX(3px);
+  }
+}
+
+@keyframes nodeSat3 {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ringPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.25;
+  }
+}
+
+@keyframes dashFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+
+@keyframes dotPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+
+
+@keyframes particleFloat1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translate(15px, -20px);
+    opacity: 0.2;
+  }
+}
+
+@keyframes particleFloat2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translate(-12px, 18px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes particleFloat3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translate(10px, -15px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes particleFloat4 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translate(-18px, -10px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes particleFloat5 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translate(14px, 12px);
+    opacity: 0.2;
+  }
+}
+
+@keyframes particleFloat6 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translate(-8px, -14px);
+    opacity: 0.9;
+  }
+}
+
+/* ── 20. RESPONSIVE ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-glass {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .about-stats {
+    justify-content: center;
+  }
+
+  /* Experience card centres with the stacked glass card above it */
+  .exp-card {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .about-areas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .timeline::before {
+    left: 18px;
+  }
+
+  .tl-left,
+  .tl-right {
+    flex-direction: row;
+    padding: 0 0 2rem 3.5rem;
+    margin-left: 0;
+  }
+
+  .tl-left .tl-dot,
+  .tl-right .tl-dot {
+    left: 0;
+    transform: none;
+  }
+
+  .reveal-tl {
+    transform: translateX(-30px);
+  }
+
+  .tl-right.reveal-tl {
+    transform: translateX(-30px);
+  }
+
+  .identity-nodes {
+    height: min(380px, 70vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Stack the three skill nodes in a clean vertical column so nothing
+     overlaps. VIJAY stays centred between them, and the JS keeps redrawing
+     the connection lines to whatever position each node actually lands in. */
+  .identity-nodes {
+    height: auto;
+    min-height: 430px;
+    padding: 0.5rem 0;
+  }
+
+  .node-satellite {
+    width: 168px;
+    min-height: 62px;
+    font-size: 0.66rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .node-center {
+    width: 104px;
+    height: 104px;
+    font-size: 0.82rem;
+  }
+
+  /* Top row: Server Developer (left) + Web Developer (right) */
+  .node-mgr {
+    top: 0;
+    left: 0;
+    right: auto;
+  }
+
+  .node-dev {
+    top: 0;
+    right: 0;
+    left: auto;
+  }
+
+  /* VIJAY sits just below the top row */
+  .node-center {
+    top: 128px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  /* Student sits at the bottom of the column */
+  .node-age {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* The desktop keyframes hard-code translate(-50%, -50%), which would
+     re-centre VIJAY vertically on mobile. Override both the resting state
+     and the entrance/breathing animations to the mobile offset. */
+  .node-center {
+    animation-name: nodeCenterMobile;
+  }
+
+  .identity-nodes.in-view .enter-vijay {
+    animation-name: enterVijayMobile;
+  }
+
+  @keyframes nodeCenterMobile {
+    0%,
+    100% {
+      box-shadow: var(--glow-md), inset 0 0 24px rgba(147, 51, 234, 0.30);
+      transform: translate(-50%, 0) scale(1);
+    }
+
+    50% {
+      box-shadow: 0 0 45px rgba(147, 51, 234, 0.5), 0 0 90px rgba(147, 51, 234, 0.22), inset 0 0 30px rgba(147, 51, 234, 0.38);
+      transform: translate(-50%, 0) scale(1.025);
+    }
+  }
+
+  @keyframes enterVijayMobile {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 0) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-links {
+    gap: 0.7rem;
+  }
+
+  .contact-btn {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.6rem;
+  }
+
+  .about-glass {
+    padding: 1.5rem;
+  }
+
+  .about-stats {
+    gap: 1.5rem;
+  }
+
+  .stat-num {
+    font-size: 1.8rem;
+  }
+
+  /* Single column so long area names never crowd or overflow */
+  .about-areas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .area-chip-code {
+    grid-column: auto;
+  }
+
+  .exp-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 1rem 1.2rem;
+    text-align: left;
+  }
+
+  .exp-value {
+    font-size: 1.3rem;
+  }
+}
+
+/* ── 21. REDUCED MOTION ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-label,
+  .hero-title,
+  .hero-subtitle,
+  .hero-intro,
+  .hero-buttons,
+  .scroll-indicator {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 22. PROJECT MODAL & TOAST ────────────────────────────── */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.project-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 2;
+  background: rgba(10, 5, 28, 0.94);
+  border: 1px solid var(--glass-border-h);
+  box-shadow: var(--glow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  max-width: 600px;
+  width: 100%;
+  overflow: hidden;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s var(--ease-out);
+}
+
+.project-modal.active .modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+
+.modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(147, 51, 234, 0.12);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.modal-close:hover {
+  background: var(--purple-br);
+  border-color: var(--magenta);
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 1.8rem;
+}
+
+.modal-preview-box {
+  height: 160px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(26, 5, 51, 0.9), rgba(107, 33, 168, 0.6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  margin-bottom: 1.4rem;
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  box-shadow: inset 0 0 30px rgba(147, 51, 234, 0.2);
+  /* Clip the thumbnail to the box's rounded corners */
+  overflow: hidden;
+}
+
+/* The box is collapsed when a project has no thumbnail to show */
+.modal-preview-box[hidden] {
+  display: none;
+}
+
+/* Real project thumbnail inside the modal — fills the box without
+   stretching, and inherits its rounded corners via the clip above. */
+.modal-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.modal-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Toast HUD Notification */
+/* Sits above .mc-more-modal (z-index 1000) so its message stays visible
+   while the Minecraft server list is open. */
+.cosmic-toast {
+  position: fixed;
+  bottom: 2.2rem;
+  right: 2.2rem;
+  background: rgba(12, 5, 32, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--purple-br);
+  border-radius: 50px;
+  padding: 0.85rem 1.8rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  box-shadow: var(--glow-md);
+  z-index: 1200;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.35s var(--ease-out);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cosmic-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 0 10px var(--magenta);
+  animation: dotPulse 1.5s infinite;
+}
+
+/* ============================================================
+   PROFESSIONAL PORTFOLIO ENHANCEMENTS
+   ============================================================ */
+
+/* ── Custom Cosmic Scrollbar & Selection ───────────────────── */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #02020c;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #9333ea, #d946ef);
+  border-radius: 6px;
+  border: 2px solid #02020c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a855f7, #9333ea);
+}
+::selection {
+  background: rgba(147, 51, 234, 0.45);
+  color: #ffffff;
+}
+
+/* ── Hero Status Pill ───────────────────────────────────────── */
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(10, 6, 28, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  padding: 0.42rem 1.15rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: clamp(0.55rem, 1.2vw, 0.68rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #34d399;
+  box-shadow: 0 0 18px rgba(52, 211, 153, 0.18);
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease 0.2s forwards;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-status-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(52, 211, 153, 0.8);
+  box-shadow: 0 0 25px rgba(52, 211, 153, 0.3);
+}
+
+.status-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  position: relative;
+  display: inline-block;
+}
+
+.status-pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid #10b981;
+  animation: beaconPulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ── Hero Typewriter Dynamic Role ───────────────────────────── */
+.role-rotator {
+  color: var(--magenta);
+  font-weight: 700;
+  text-shadow: 0 0 18px rgba(217, 70, 239, 0.65);
+  border-bottom: 2px solid rgba(217, 70, 239, 0.5);
+  padding-bottom: 2px;
+  letter-spacing: 0.12em;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  color: var(--magenta);
+  font-weight: 300;
+  margin-left: 3px;
+  animation: cursorBlink 0.9s infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.btn-ghost:hover {
+  background: rgba(147, 51, 234, 0.18);
+  border-color: var(--purple-br);
+  color: var(--white);
+  box-shadow: var(--glow-xs);
+  transform: translateY(-2px);
+}
+
+/* ── Skills Filter Bar ──────────────────────────────────────── */
+.skills-filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 2.4rem;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.55rem 1.3rem;
+  border-radius: 30px;
+  background: var(--glass-bg);
+  color: var(--muted);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+}
+
+.filter-pill:hover {
+  color: var(--white);
+  border-color: var(--purple-br);
+  box-shadow: var(--glow-xs);
+  transform: translateY(-2px);
+}
+
+.filter-pill.active {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.38), rgba(217, 70, 239, 0.28));
+  color: var(--white);
+  border-color: var(--magenta);
+  box-shadow: var(--glow-sm);
+}
+
+/* Micro Tech Tags inside Skill Cards */
+.skill-tags {
+  display: flex;
+  gap: 0.35rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+
+.sk-tag {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--purple-light);
+  background: rgba(147, 51, 234, 0.12);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  border-radius: 20px;
+  padding: 0.22rem 0.65rem;
+  transition: all 0.25s ease;
+}
+
+.service-card:hover .sk-tag {
+  border-color: var(--magenta);
+  background: rgba(217, 70, 239, 0.2);
+  color: var(--white);
+  box-shadow: 0 0 10px rgba(217, 70, 239, 0.35);
+}
+
+/* Skill card filtering hide animation */
+.service-card.is-filtered-out {
+  display: none !important;
+}
+
+/* ── Floating Back-to-Top Button ────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 2.2rem;
+  right: 2.2rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(12, 5, 32, 0.88);
+  border: 1px solid var(--purple-br);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 998;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--glow-sm);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.85);
+  transition: all 0.35s var(--ease-out);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+  background: linear-gradient(135deg, var(--purple-br), var(--magenta));
+  border-color: var(--magenta);
+  box-shadow: var(--glow-md);
+  transform: translateY(-4px) scale(1.08);
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-3px);
+}/* ── Minecraft "+23" server-list popup ────────────────────────
+   Small companion popup for the Minecraft Server Projects card.
+   Reuses the existing tokens (fonts, violet palette, glow, easing)
+   and mirrors the .project-modal open/close feel (fade + scale).
+   Scoped to .mc-more-* so no other card or section is affected. */
+
+/* The "+23" chip is styled by the shared premium tag rules in section 14
+   (see .project-tags > .tag-more) so it matches the other project tags.
+   Only the button reset and the click affordance belong here. */
+.project-tags .tag-more {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.mc-more-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mc-more-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mc-more-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.mc-more-dialog {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 560px;
+  max-height: min(80vh, 640px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(10, 5, 28, 0.94);
+  border: 1px solid var(--glass-border-h);
+  border-radius: 24px;
+  box-shadow: var(--glow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s var(--ease-out);
+}
+
+.mc-more-modal.active .mc-more-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.mc-more-header {
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+.mc-more-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+
+.mc-more-close {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(147, 51, 234, 0.12);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.mc-more-close:hover,
+.mc-more-close:focus-visible {
+  background: var(--purple-br);
+  border-color: var(--magenta);
+  transform: rotate(90deg);
+  outline: none;
+}
+
+.mc-more-body {
+  padding: 1.2rem 1.5rem 1.4rem;
+  overflow-y: auto;
+}
+
+/* Compact multi-column grid of server names */
+.mc-more-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+/* ── Premium gold/amber project blocks ────────────────────────
+   Local tokens keep the warm accent confined to these blocks —
+   the popup shell, header and close button stay violet above. */
+.mc-more-grid li {
+  --gold: #f2b64b;
+  --gold-soft: rgba(242, 182, 75, 0.34);
+  --gold-glow: rgba(242, 182, 75, 0.16);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  padding: 0.42rem 0.6rem;
+  border-radius: 10px;
+  /* Near-black plum interior with a faint top-lit amber gradient */
+  background: linear-gradient(180deg, rgba(34, 22, 8, 0.92) 0%, rgba(14, 8, 20, 0.96) 100%);
+  border: 1px solid var(--gold-soft);
+  color: var(--white-dim);
+  text-align: center;
+  overflow-wrap: anywhere;
+  box-shadow: 0 0 10px var(--gold-glow), inset 0 1px 0 rgba(242, 182, 75, 0.10);
+  /* Only transform/colour animate — never the layout box, so no
+     reflow and no chance of horizontal overflow while hovering. */
+  transition: transform 0.28s var(--ease-out), box-shadow 0.28s ease,
+    border-color 0.28s ease, color 0.28s ease;
+  will-change: transform;
+}
+
+/* Soft inner highlight along the top edge of the border */
+.mc-more-grid li::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(242, 182, 75, 0.09) 0%, rgba(242, 182, 75, 0) 62%);
+  pointer-events: none;
+}
+
+/* Very subtle premium shine that sweeps across on hover */
+.mc-more-grid li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(100deg,
+      rgba(255, 226, 160, 0) 0%,
+      rgba(255, 226, 160, 0.12) 50%,
+      rgba(255, 226, 160, 0) 100%);
+  transform: skewX(-18deg);
+  transition: left 0.7s var(--ease-out);
+  pointer-events: none;
+}
+
+.mc-more-grid li:hover,
+.mc-more-grid li:focus-visible {
+  transform: translateY(-3px) scale(1.02);
+  border-color: var(--gold);
+  color: var(--white);
+  box-shadow: 0 0 18px rgba(242, 182, 75, 0.30),
+    inset 0 1px 0 rgba(242, 182, 75, 0.18);
+}
+
+.mc-more-grid li:hover::after,
+.mc-more-grid li:focus-visible::after {
+  left: 130%;
+}
+
+/* ── Staggered entrance ───────────────────────────────────────
+   Each block waits one short beat longer than the last. The delay is
+   derived from its --i index (set in JS), so the sequence stays correct
+   no matter how many names the list holds. */
+.mc-more-modal.active .mc-more-grid li {
+  animation: mcBlockIn 0.34s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 22ms + 70ms);
+}
+
+@keyframes mcBlockIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .mc-more-dialog {
+    max-height: 82vh;
+  }
+  .mc-more-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mc-more-header {
+    padding: 1rem 1.1rem;
+  }
+  .mc-more-body {
+    padding: 1rem 1.1rem 1.2rem;
+  }
+  /* Shorter stagger so the list finishes appearing promptly on a phone */
+  .mc-more-modal.active .mc-more-grid li {
+    animation-delay: calc(var(--i, 0) * 14ms + 60ms);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-more-dialog,
+  .mc-more-modal {
+    transition: none;
+  }
+  /* Show the blocks immediately — no stagger, no entrance motion */
+  .mc-more-modal.active .mc-more-grid li {
+    animation: none;
+  }
+  .mc-more-grid li {
+    transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    will-change: auto;
+  }
+  .mc-more-grid li:hover,
+  .mc-more-grid li:focus-visible {
+    transform: none;
+  }
+  .mc-more-grid li::after {
+    transition: none;
+  }
+  /* Project tags: show immediately, no entrance motion, no hover lift */
+  .project-tags > span,
+  .project-tags > .tag-more {
+    opacity: 1;
+    transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    will-change: auto;
+  }
+  .project-card.in-view .project-tags > span,
+  .project-card.in-view .project-tags > .tag-more {
+    animation: none;
+  }
+  .project-tags > span:hover,
+  .project-tags > .tag-more:hover,
+  .project-tags > span:focus-visible,
+  .project-tags > .tag-more:focus-visible {
+    transform: none;
+  }
+  .project-tags > span::after,
+  .project-tags > .tag-more::after {
+    transition: none;
+  }
+}
